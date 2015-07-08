@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript Bonfires</title>
+</head>
+<body>
+<script>
+  //reverse string challenge
+  function reverseString(str) { 
+  var reversed = str.split("");
+    reversed.reverse();
+    str = reversed.join('');
+  return str;
+}
+
+reverseString('hello');
+  //Factorialize
+  function factorialize(num) {
+    var total = 1;
+  for(i=0; i < num; i++) {
+    var multiplier = num - i - 1
+    total += total * multiplier;
+  } 
+    return total;
+}
+
+factorialize(5);
+  //Palindromes
+  function palindrome(str) {
+    str = str.toLowerCase();
+   var cleanStr = str.replace(/ /g, '');//takes out spaces
+    var cleanerStr = cleanStr.replace(/,/g, ''); //takes out commas
+    var cleanestStr = cleanerStr.replace('.', ''); //takes out periods
+    cleanStr = cleanestStr
+  var reversed = cleanStr.split("");
+    reversed.reverse();
+    var strTest = reversed.join('');
+    if (strTest === cleanStr) {
+      return true;
+    } else {
+      return false;}
+}
+palindrome("A man, a plan, a canal. Panama");
+  //Longest word
+  function findLongestWord(str) {
+    var smallString = str.split(' ');
+    var winner = " ";
+    for(i = 0; i < smallString.length; i++) {
+      if (smallString[i].length > winner.length) {
+        winner = smallString[i];
+      } else {}
+    }
+  return winner.length;
+}
+findLongestWord('The quick brown fox jumped over the lazy dog');
+  //Title case a sentence
+  function titleCase(str) {
+    var smallString = str.split(' ');
+    for(i = 0; i < smallString.length; i++) {
+      var smallUpper = smallString[i].charAt(0).toUpperCase();
+      if (smallString[i].length > 0) {
+        var rest = smallString[i].slice(1);
+      } else {};
+         return smallUpper.concat(rest);
+    };
+
+      console.log(final);
+    //console.log(smallString);
+  return str;
+}
+
+titleCase("I'm a little tea pot");
+  
+</script>
+
+
+  </body>
+</html>
