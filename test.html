@@ -13,7 +13,6 @@
     str = reversed.join('');
   return str;
 }
-
 reverseString('hello');
   //Factorialize
   function factorialize(num) {
@@ -24,7 +23,6 @@ reverseString('hello');
   } 
     return total;
 }
-
 factorialize(5);
   //Palindromes
   function palindrome(str) {
@@ -64,14 +62,74 @@ findLongestWord('The quick brown fox jumped over the lazy dog');
       } else {};
          return smallUpper.concat(rest);
     };
-
       console.log(final);
     //console.log(smallString);
   return str;
 }
-
 titleCase("I'm a little tea pot");
-  
+    //Check ending of string with title
+function end(str, target) {
+    var targetLen = target.length;
+    var strLen = str.length;
+    var testString = str.slice(strLen-targetLen);
+    if (testString === target) {
+        return true;
+    }else {
+        return false;
+    }
+}
+
+end('Bastian', 'n');
+   //Repeat a string n times if n isn't negative
+function repeat(str, num) {
+  var results = [];
+    i = 0;
+    if (num > 0) {
+      while (i < num) {
+        results.push(str);
+        i = i + 1;
+      }
+    } else {
+      str = '';
+  }
+    var cleanup = results.toString();
+    str = cleanup.replace(/,/g, '');
+  return str;
+}
+
+repeat('abc', 3);
+    //Cut a string if larger than second argument and replace with ... included in length
+function truncate(str, num) {
+  if (str.length > num) {
+      var cutLen = num - 2;
+      var slicedStr = str.slice(0,cutLen);
+      var total = slicedStr.concat("...").replace(/ /g, '');
+      return total;
+  }else {
+      return str;
+  };
+  return str;
+}
+
+truncate('A-tisket a-tasket A green and yellow basket', 11)
+  //Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a multidimensional array.
+function chunk(arr, size) {
+  var results = [];
+    var test = (arr.length / size);
+    console.log(test);
+   if (test < size) {
+    results.push(arr.slice(0, size));
+    results.push(arr.slice(size,arr.length));
+   } else {
+    var start = arr.length-(size*size);
+       results.push(arr.slice(start, start+size));
+       results.push(arr.slice(start+size, arr.length));
+   }
+  console.log(results);
+}
+
+chunk(['a', 'b', 'c', 'd'], 2);
+chunk([0, 1, 2, 3, 4, 5], 3);
 </script>
 
 
