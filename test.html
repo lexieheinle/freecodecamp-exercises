@@ -135,18 +135,38 @@ function slasher(arr, howMany) {
 slasher([1, 2, 3], 2);
     //Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
 function mutation(arr) {
-    var test = arr[1];
-    console.log(test);
-    console.log(arr.indexOf(test));
-    if (arr.indexOf(test) === -1 || 1) {
-        return false;
-    } else {
-        return true;
-    }
+  arr[0] = arr[0].toLowerCase();
+  arr[1] = arr[1].toLowerCase();
+  console.log(arr[0]);
+  var results = [];
+  for(i = 0; i < arr[1].length; i++) { 
+      results.push(arr[0].indexOf(arr[1][i]));
+  }
+  if (results.indexOf(-1) !== -1) {
+    return false;
+  } else {
+    return true;
+  } 
 }
 
-mutation(['hello', 'hey']);
+mutation(['Hello', 'hey']);
 mutation(['floor', 'for']);
+  //Remove all falsey values from an array. Falsey values in javascript are false, null, 0, "", undefined, and NaN.
+  
+function bouncer(arr) {
+  function truey(value) {
+    if (value === null || false || 0 || "" || undefined || NaN) {
+    } else {
+      return value;
+    };
+  }
+  return arr.filter(truey);
+  console.log(typeof arr[2]);
+}
+
+bouncer([7, 'ate', '', false, 9, null]);
+bouncer([false, null, 0]);
+bouncer(['a', 'b', 'c']);
 </script>
 
 
