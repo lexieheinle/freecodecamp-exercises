@@ -167,6 +167,19 @@ function bouncer(arr) {
 bouncer([7, 'ate', '', false, 9, null]);
 bouncer([false, null, 0]);
 bouncer(['a', 'b', 'c']);
+  //Make a function that looks through a list (first argument) and returns an array of all objects that have equivalent property values (second argument).
+function where(collection, source) {
+  var arr = [];
+  console.log(source.hasOwnProperty("last"));
+  for(i = 0; i < collection.length; i++) {
+    if (collection[i].hasOwnProperty("last") !== null) {
+      arr.push(collection[i]);
+    } else {}
+  };
+  console.log(arr);
+}
+
+where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' });
 </script>
 
 
