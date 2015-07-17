@@ -137,7 +137,6 @@ slasher([1, 2, 3], 2);
 function mutation(arr) {
   arr[0] = arr[0].toLowerCase();
   arr[1] = arr[1].toLowerCase();
-  console.log(arr[0]);
   var results = [];
   for(i = 0; i < arr[1].length; i++) { 
       results.push(arr[0].indexOf(arr[1][i]));
@@ -170,16 +169,87 @@ bouncer(['a', 'b', 'c']);
   //Make a function that looks through a list (first argument) and returns an array of all objects that have equivalent property values (second argument).
 function where(collection, source) {
   var arr = [];
-  console.log(source.hasOwnProperty("last"));
   for(i = 0; i < collection.length; i++) {
-    if (collection[i].hasOwnProperty("last") !== null) {
+    if (collection[i].last === source.last) {
       arr.push(collection[i]);
     } else {}
-  };
-  console.log(arr);
+  }
+  return arr;
 }
 
 where([{ first: 'Romeo', last: 'Montague' }, { first: 'Mercutio', last: null }, { first: 'Tybalt', last: 'Capulet' }], { last: 'Capulet' });
+ 
+  //You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
+function destroyer(arr, arg1, arg2) {
+  var results = [];
+  for(i =0; i < arr.length; i++) {
+    if (arr[i] !== arg1) {
+      if (arr[i] !== arg2) {
+      results.push(arr[i]);
+      } else {}
+    } else {
+  }
+  }
+return results;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+  
+  //Return the lowest index at which a value (second argument) should be inserted into a sorted array (first argument).
+function where(arr, num) {
+    var lowest;
+  for(i = 0; i < arr.length; i++) {
+    if (arr[i] < num) {
+      lowest = arr.indexOf(arr[i]) + 1; //add 1 to take where num will be
+    } else {}
+  }
+  return lowest;
+}
+
+where([40, 60], 50);
+
+  //We'll pass you an array of two numbers. Return the sum of those two numbers and all numbers between them.
+  function sumAll(arr) {
+    var total = 0;
+    var first = arr[0];
+    var second = arr[1];
+    total = first + second;
+    var min = Math.min(first, second) + 1; //Need to add because already added
+    var max = Math.max(first, second);
+    for(i = min; i < max; i++) {
+       total += i;
+    }
+  return total;
+}
+
+sumAll([1, 4]);
+sumAll([4, 1]); 
+sumAll([5, 10]); 
+  
+  //Compare two arrays and return a new array with any items not found in both of the original arrays.
+function diff(arr1, arr2) {
+  var newArr = [];
+  for(i = 0; i < arr2.length; i++) {
+    if (arr2.indexOf(arr1[i]) === -1) {
+      if (arr1[i] !== undefined) {
+      newArr.push(arr1[i]);
+      console.log(arr1[i]);
+      } 
+    }
+    if (arr1.indexOf(arr2[i]) === -1) {
+      if (arr2[i] !== undefined) {
+      newArr.push(arr2[i]);
+      console.log(arr2[i]);
+      } 
+    } 
+  }
+  return newArr;
+}
+
+diff([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+  diff(['diorite', 'andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']);
+  diff([1, 'calf', 3, 'piglet'], [1, 'calf', 3, 4]);
+diff([], ['snuffleupagus', 'cookie monster', 'elmo']);
 </script>
 
 
