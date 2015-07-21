@@ -160,7 +160,6 @@ function bouncer(arr) {
     };
   }
   return arr.filter(truey);
-  console.log(typeof arr[2]);
 }
 
 bouncer([7, 'ate', '', false, 9, null]);
@@ -233,13 +232,11 @@ function diff(arr1, arr2) {
     if (arr2.indexOf(arr1[i]) === -1) {
       if (arr1[i] !== undefined) {
       newArr.push(arr1[i]);
-      console.log(arr1[i]);
       } 
     }
     if (arr1.indexOf(arr2[i]) === -1) {
       if (arr2[i] !== undefined) {
       newArr.push(arr2[i]);
-      console.log(arr2[i]);
       } 
     } 
   }
@@ -250,6 +247,54 @@ diff([1, 2, 3, 5], [1, 2, 3, 4, 5]);
   diff(['diorite', 'andesite', 'grass', 'dirt', 'pink wool', 'dead shrub'], ['diorite', 'andesite', 'grass', 'dirt', 'dead shrub']);
   diff([1, 'calf', 3, 'piglet'], [1, 'calf', 3, 4]);
 diff([], ['snuffleupagus', 'cookie monster', 'elmo']);
+  //Convert the given number into a roman numeral.
+function convert(num) {
+  var romanNum = [];
+  var test = num;
+  var roman = {10: "X", 9: "IX", 5: "V", 4: "IV", 1: "I"};
+  for(var i = 0; i < (test+1); i++) {
+    if(test >= 10) {
+      romanNum.push(roman[10]);
+      test -= 10;
+    }
+    else if(test === 9) {
+      romanNum.push(roman[9]);
+      test -= 9;
+    }
+    else if(test >= 5) {
+      romanNum.push(roman[5]);
+      test -= 5;
+    }
+    else if(test === 4) {
+      romanNum.push(roman[4]);
+      test -= 4;
+    }
+    else if(num%2 === 0) { //adds for 12;
+      romanNum.push(roman[1]);
+      test -= 1;
+     console.log(num);
+    }
+  }
+if((num%2) === 0) { //adds for 36;
+  console.log(num);
+  romanNum.push(roman[1]);
+  }
+  console.log(romanNum);
+  var converted = romanNum.join('');
+ return converted;
+}
+
+convert(36);
+convert(12);
+convert(9);
+convert(29);
+  //Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+  function replace(str, before, after) {
+ return str;
+}
+
+replace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+  
 </script>
 
 
