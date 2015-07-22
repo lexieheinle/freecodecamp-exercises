@@ -272,14 +272,11 @@ function convert(num) {
     else if(num%2 === 0) { //adds for 12;
       romanNum.push(roman[1]);
       test -= 1;
-     console.log(num);
     }
   }
 if((num%2) === 0) { //adds for 36;
-  console.log(num);
   romanNum.push(roman[1]);
   }
-  console.log(romanNum);
   var converted = romanNum.join('');
  return converted;
 }
@@ -289,14 +286,103 @@ convert(12);
 convert(9);
 convert(29);
   //Perform a search and replace on the sentence using the arguments provided and return the new sentence.
-  function replace(str, before, after) {
- return str;
+function replace(str, before, after) {
+  var start_cut = str.indexOf(before);
+  var cut_amount = before.length;
+  var end_cut = start_cut + cut_amount;
+  var cuttedFirst = str.substring(0,start_cut);
+  var cuttedSecond = str.substring(end_cut);
+  if (before.charAt(0) === before.charAt(0).toUpperCase()) {
+    after = after.replace(after[0], after[0].toUpperCase());
+  }
+  str = cuttedFirst.concat(after,cuttedSecond);
+ return str; 
 }
 
 replace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
-  
-</script>
+replace("His name is Tom", "Tom", "john");  
+  //Translate the provided string to pig latin.
+function translate(str) {
+  var begin;
+  var rest;
+  if (str[0] === "a" || str[0] === "e" || str[0] === "i" || str[0] === "o" || str[0] === "u"){
+    str = str.concat("way");
+  } else if (str[0] === "g"){
+    begin = str.substr(0, 2);
+    rest = str.slice(2);
+   str = rest.concat(begin, "ay");
+  } else {
+    begin = str.substr(0, 1);
+    rest = str.slice(1);
+   str = rest.concat(begin, "ay");
+  }
+  return str;
+}
 
+translate("consonant");
+translate("glove");
+  //The DNA strand is missing the pairing element. Match each character with the missing element and return the results as a 2d array. Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+function pair(str) {
+  var results = [];
+  var arrayed = str.split('');
+  for (var i = 0; i < arrayed.length; i++){
+    if (arrayed[i] === "G") {
+      results.push([arrayed[i], "C"]);
+    } else if (arrayed[i] === "C") {
+      results.push([arrayed[i], "G"]);
+    } else if (arrayed[i] === "A") {
+      results.push([arrayed[i], "T"]);
+    } else if (arrayed[i] === "T") {
+      results.push([arrayed[i], "A"]);
+    } 
+  }
+ return results;
+}
+
+pair("GCG");
+  //Find the missing letter in the passed letter range and return it. If all letters are present in the range, return undefined.
+function fearNotLetter(str) {
+  var test = str.charCodeAt(0);
+  var missing;
+  for(var i = 0; i < str.length; i++){
+    if(str.charCodeAt(i) === test){
+      test += 1;
+    }else if(str.charCodeAt(i) !== test) {
+      missing = String.fromCharCode(test);
+      test += 2;
+    }
+  }
+  return missing;
+}
+
+fearNotLetter('abce');
+fearNotLetter('abcdefghjklmno');
+  //Check if a value is classified as a boolean primitive. Return true or false.
+function boo(bool) {
+    if (bool === null || bool ===  false || bool ===  0 || bool ===  "" || bool === undefined || bool === NaN || bool === true) {
+      return true;
+    } else {
+     return false;
+    }
+}
+
+boo(null);
+boo(true);
+  //Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+function unite(arr1, arr2, arr3) {
+  var bigArray = [];
+  bigArray.push(arr1);
+  bigArray.push(arr2);
+  bigArray.push(arr3);
+  console.log(bigArray);
+  bigArray.reduce(function(prev, curr, index, unique){
+    
+  })
+  return arr1;
+}
+
+unite([1, 2, 3], [5, 2, 1, 4], [2, 1]);
+</script>
 
   </body>
 </html>
