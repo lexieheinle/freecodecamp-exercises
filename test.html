@@ -389,29 +389,62 @@ function unite(arr1, arr2, arr3) {
 
 unite([1, 2, 3], [5, 2, 1, 4], [2, 1]);
 unite([1, 3, 2], [1, [5]], [2, [4]]); 
+
   //Convert the characters "&", "<", ">", '"' (double quote), and "'" (apostrophe), in a string to their corresponding HTML entities.
 function convertChar(str) {
   var conversion = ['&', "&amp;", '<',"&lt;", '>', "&gt;", '"', "&quot;", "'", "&apos;"];
-  var k = 0;
-  var n = 0;
-  while (k < str.length){
+  var k = 0; 
+  for(var i = 0; i < str.length; i++){
+    while(k < conversion.length) {
     if(str.indexOf(conversion[k]) !== -1){
-      str = str.replace(conversion[k], conversion[k += 1]);
-       n = str.indexOf(conversion[k]) + 1;
-    }
-    if(str.indexOf(conversion[k], n) !== -1) {
-      str = str.replace(conversion[k], conversion[k += 1]);
-    }
+      var globify = new RegExp(conversion[k], "g");
+      str = str.replace(globify, conversion[k += 1]);
+    } 
     k += 1;
+    }
   }
-  console.log(str);
-  console.log(str.indexOf(conversion[2], 12));
   return str;
 }
 
 convertChar('Dolce & Gabbana < >');
 convertChar('Hamburgers < Pizza < Tacos');
-  convertChar('Stuff in "quotation marks"')
+convertChar('Stuff in "quotation marks"');
+convertChar('<>');
+  
+  //Convert a string to spinal case. Spinal case is all-lowercase-words-joined-by-dashes.
+function spinalCase(str) {
+  var result = [];
+  var success = [];
+  var arr = [];
+  //str = str.toLowerCase();
+  for(var i = 0; i < str.length; i++) {
+    if(str[i] === "_") {
+      str[i] = " ";
+    }
+    if (str[i] === str[i].toUpperCase()) {
+      success.push(i);
+    }
+    /*if(str[i] === "_") {
+      arr = str.split("_");
+    } else if {
+      
+    } else {
+      arr = str.split(" ");
+    }*/
+    console.log(success);
+  }
+  for(var i = 0; i < success.length; i++){
+    arr.push(str.substr(success[i], success[i]));
+  }
+  //var arr = str.split(" ");
+  console.log(arr);
+  str = arr.join('-');
+  console.log(str);
+}
+
+spinalCase('This Is Spinal Tap');
+  spinalCase('The_Andy_Griffith_Show');
+  spinalCase('thisIsSpinalTap');
 </script>
 
   </body>
