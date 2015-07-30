@@ -416,31 +416,40 @@ function spinalCase(str) {
   var result = [];
   var success = [];
   var arr = [];
-  //str = str.toLowerCase();
+  var globifyHyp = new RegExp("_", "g");
+  str = str.replace(globifyHyp, "");
+  var globifySp = new RegExp(" ", "g");
+  str = str.replace(globifySp, "");
   for(var i = 0; i < str.length; i++) {
-    if(str[i] === "_") {
-      str[i] = " ";
-    }
     if (str[i] === str[i].toUpperCase()) {
       success.push(i);
     }
-    /*if(str[i] === "_") {
-      arr = str.split("_");
-    } else if {
-      
-    } else {
-      arr = str.split(" ");
-    }*/
-    console.log(success);
   }
+  console.log(success);
   for(var i = 0; i < success.length; i++){
-    arr.push(str.substr(success[i], success[i]));
+    if(success[0] !== 0){
+      arr.push(str.substr(0, (success[i])));
+      //console.log(str.substr(0, (success[i])));
+      if(success[i] === Math.max(success[i+1], success[i])) {
+        arr.push(str.substr((success[i])));
+        console.log(str.substr((success[i])));
+      } else{
+        arr.push(str.substr((success[i]), (success[i+1]-success[i])));
+        //console.log(str.substr((success[i]), (success[i+1]-success[i])));
+      }
+    } else {
+      if(success[i] === Math.max(success[i+1], success[i])) {
+        arr.push(str.substr((success[i])));
+        console.log(str.substr((success[i])));
+      } else{
+        arr.push(str.substr((success[i]), (success[i+1]-success[i])));
+        //console.log(str.substr((success[i]), (success[i+1]-success[i])));
+      }
   }
-  //var arr = str.split(" ");
-  console.log(arr);
-  str = arr.join('-');
-  console.log(str);
+  var cleanUpStr = arr.join('-');
+    console.log(Math.max(0, 12));
 }
+};
 
 spinalCase('This Is Spinal Tap');
   spinalCase('The_Andy_Griffith_Show');
